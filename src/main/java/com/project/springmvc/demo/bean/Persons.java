@@ -1,33 +1,20 @@
-package com.project.springmvc.demo.entity;
+package com.project.springmvc.demo.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="PERSONS")
-@NamedQueries({
-    @NamedQuery(name = "getAllPersons", query = "from Persons"),
-})
 public class Persons {
 	
-	@Id
-	@Column(name="PERSONID")
+	
 	private int personId;
 	
-	@Column(name="FIRSTNAME")
+	
 	private String firstName;
 	
-	@Column(name="LASTNAME")
+	
 	private String lastName;
 	
-	@Column(name="EMAIL")
+	
 	private String email;
 	
-	@Column(name="PHONE")
+	
 	private String phone;
 
 

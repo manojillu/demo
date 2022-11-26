@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project.springmvc.demo.model.CustomerDetails;
+import com.project.springmvc.demo.bean.Persons;
 import com.project.springmvc.demo.service.PersonServiceImpl;
 
 @Controller
-public class Welcome {
+public class WelcomeController {
 	
 	@Autowired
 	private PersonServiceImpl personServiceImpl;
@@ -19,7 +19,7 @@ public class Welcome {
 	
 	@GetMapping("/")
 	public String getWelcomeDetails(Model model) {
-		List<CustomerDetails> detailsList=personServiceImpl.getDetails();
+		List<Persons> detailsList=personServiceImpl.getDetails();
 		model.addAttribute("detailsList", detailsList);
 		return "welcome";
 	}

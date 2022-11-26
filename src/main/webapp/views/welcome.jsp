@@ -31,10 +31,10 @@
 			     <c:forEach items="${detailsList}" var="details">
 			      <tr>
 			     
-				        <td>${details.fName}</td>
-				        <td>${details.lName}</td>
+				        <td>${details.firstName}</td>
+				        <td>${details.lastName}</td>
 				        <td>${details.email}</td>
-				        <td>${details.pno}</td>
+				        <td>${details.phone}</td>
 			       
 			      </tr>
 			       </c:forEach>

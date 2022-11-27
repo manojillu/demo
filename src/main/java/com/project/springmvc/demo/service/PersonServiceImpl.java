@@ -20,4 +20,13 @@ public class PersonServiceImpl extends BaseServiceImpl{
 		return personsList;
 	}
 
+
+	public Persons getPersonDetailById(int id) {
+		return detailsRepository.getPersonDetailsById(id);
+	}
+
+	public void insertPersonDetails(Persons persons) {
+		persons.setPersonId(detailsRepository.getMaxId()+1);
+		detailsRepository.insertPersonDetails(persons);
+	}
 }

@@ -3,25 +3,39 @@ package com.project.springmvc.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.springmvc.demo.bean.Persons;
 import com.project.springmvc.demo.service.PersonServiceImpl;
 
-@Controller
+@RestController
 public class WelcomeController {
 	
 	@Autowired
 	private PersonServiceImpl personServiceImpl;
 
 	
-	@GetMapping("/")
-	public String getWelcomeDetails(Model model) {
+	@GetMapping(value="/",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<Persons>> getWelcomeDetails() {
 		List<Persons> detailsList=personServiceImpl.getDetails();
-		model.addAttribute("detailsList", detailsList);
-		return "welcome";
-	}
+		return new ResponseEntity<>(detailsList,HttpStatus.OK);
+	} 
 
+	@GetMapping(value="/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<Persons> getWelcomeDetailsById(@PathVariable int id) {
+		Persons persons=personServiceImpl.getPersonDetailById(id);
+		return new ResponseEntity<>(persons,HttpStatus.OK);
+	} 
+	
+	@PostMapping(value = "/savePerson")
+	public void insertPersonDetails(@RequestBody Persons persons) {
+		personServiceImpl.insertPersonDetails(persons);
+	}
 }

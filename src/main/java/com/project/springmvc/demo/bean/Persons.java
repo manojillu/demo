@@ -2,7 +2,7 @@ package com.project.springmvc.demo.bean;
 
 public class Persons {
 	
-	
+
 	private int personId;
 	
 	

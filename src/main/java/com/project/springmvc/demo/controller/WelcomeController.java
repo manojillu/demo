@@ -36,12 +36,12 @@ public class WelcomeController {
 		return new ResponseEntity<>(persons,HttpStatus.OK);
 	} 
 	
-	@PostMapping(value = "/savePerson")
+	@PostMapping(value = "/savePerson",consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void insertPersonDetails(@RequestBody Persons persons) {
 		personServiceImpl.insertPersonDetails(persons);
 	}
 	
-	@PutMapping(value = "/updatePerson")
+	@PutMapping(value = "/updatePerson",consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void updatePersonDetails(@RequestBody Persons persons) {
 		personServiceImpl.updatePersonDetails(persons);
 	}

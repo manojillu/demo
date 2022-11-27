@@ -29,4 +29,12 @@ public class PersonServiceImpl extends BaseServiceImpl{
 		persons.setPersonId(detailsRepository.getMaxId()+1);
 		detailsRepository.insertPersonDetails(persons);
 	}
+	
+	public void updatePersonDetails(Persons person) {
+		detailsRepository.updatePersonDetails(person);
+	}
+	
+	public void deletePerson(int id) {
+		detailsRepository.deletePerson(id);
+	}
 }
